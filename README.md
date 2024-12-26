@@ -18,3 +18,11 @@ Syntax
     key2 = value2
 } 
 ```
+
+### create variable in tf
+```
+variable "vaiable_name" {
+  description = "description"
+  default     = "value" 
+}
+```
