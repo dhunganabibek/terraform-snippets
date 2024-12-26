@@ -23,6 +23,7 @@ Syntax
 ```
 variable "vaiable_name" {
   description = "description"
+  type = string
   default     = "value" 
 }
 ```
