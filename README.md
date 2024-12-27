@@ -27,3 +27,10 @@ variable "vaiable_name" {
   default = "value" 
 }
 ```
+
+## adding output variable
+```
+output "output-variable" {
+  value = "hello"
+}
+```
