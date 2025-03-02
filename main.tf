@@ -4,9 +4,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "vm" {
-  ami = "ami-002d0dbfa3129d4ae"
+  ami = "ami-0aa38b529e2e10b22"
   subnet_id = "subnet-0f8cf5fb423b9f55e"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   tags = {
     Name = "First VM created by Terraform"
   }
