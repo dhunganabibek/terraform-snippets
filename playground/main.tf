@@ -3,6 +3,13 @@ provider "aws" {
   profile = "cloudguru"
 }
 
+# creating variable fr the port
+variable "port" {
+  description = "The port to be used for the web server"
+  type        = number
+  default     = 8080
+}
+
 # creating new aws ec2 instance
 resource "aws_instance" "vm" {
   ami                         = "ami-0f1a6835595fb9246"
@@ -16,7 +23,7 @@ resource "aws_instance" "vm" {
   user_data                   = <<-EOF
                 #!/bin/bash
                 echo "Hello, World!" >> index.xhtml
-                nohup busybox httpd -f -p 8080 &
+                nohup python3 -m http.server ${var.port} --bind 0.0.0.0 &
                 EOF
 }
 
@@ -24,8 +31,8 @@ resource "aws_instance" "vm" {
 resource "aws_security_group" "instance_sg" {
   name = "instance_sg"
   ingress {
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = var.port
+    to_port     = var.port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
