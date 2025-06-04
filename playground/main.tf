@@ -10,6 +10,12 @@ variable "port" {
   default     = 8080
 }
 
+# printing down the ip address of the instance
+output "instance_ip" {
+  description = "The public IP address of the EC2 instance"
+  value       = aws_instance.vm.public_ip
+}
+
 # creating new aws ec2 instance
 resource "aws_instance" "vm" {
   ami                         = "ami-0f1a6835595fb9246"
