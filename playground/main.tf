@@ -62,3 +62,37 @@ resource "aws_security_group" "instance_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+
+# adding auutoscaling group launch template
+resource "aws_launch_template" "asg_launch_template" {
+  image_id      = "ami-0f1a6835595fb9246"
+  instance_type = "t2.micro"
+
+  vpc_security_group_ids = [aws_security_group.instance_sg.id]
+
+  user_data = base64encode(<<-EOF
+    #!/bin/bash
+    echo "Hello, World" > index.xhtml
+    nohup busybox httpd -f -p ${var.port} &
+  EOF
+  )
+}
+
+# adding Autoscaling group
+resource "aws_autoscaling_group" "asg-test" {
+  launch_template {
+    id      = aws_launch_template.asg_launch_template.id
+    version = "$Latest"
+  }
+  min_size     = 1
+  max_size     = 3
+  availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  desired_capacity = 2
+    tag {
+    key                 = "Name"
+    value               = "asg-instance"
+    propagate_at_launch = true
+  }
+  
+}
