@@ -4,10 +4,48 @@ provider "aws" {
 }
 
 # creating new aws ec2 instance
-resource "aws_instance" "vm"{
-    ami = "ami-0f1a6835595fb9246"
-    instance_type = "t2.micro"
-    tags = {
-      Name = "my-ec2-instance"
-    }
+resource "aws_instance" "vm" {
+  ami                         = "ami-0f1a6835595fb9246"
+  instance_type               = "t2.micro"
+  vpc_security_group_ids      = [aws_security_group.instance_sg.id]
+  associate_public_ip_address = true
+  tags = {
+    Name = "my-ec2-instance"
+  }
+  user_data_replace_on_change = true
+  user_data                   = <<-EOF
+                #!/bin/bash
+                echo "Hello, World!" >> index.xhtml
+                nohup busybox httpd -f -p 8080 &
+                EOF
+}
+
+# addding security group to allow http traffic
+resource "aws_security_group" "instance_sg" {
+  name = "instance_sg"
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
