@@ -9,3 +9,6 @@ resource "aws_intance" "example"{
     instance_type = "t2.micro"
 }
 ```
+## Remote exec provisioner
+to execute command on remore machine using SSH
+
