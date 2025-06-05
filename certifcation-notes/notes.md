@@ -12,3 +12,5 @@ resource "aws_intance" "example"{
 ## Remote exec provisioner
 to execute command on remore machine using SSH
 
+## remove files from Terraform state with out deleting resource
+terraform state rm
