@@ -14,3 +14,11 @@ resource  "aws_s3_bucket" "contact_me_terraform_state" {
 }
 
 
+# add versioning to the bucket
+resource "aws_s3_bucket_versioning" "contact_me_terraform_state_versioning" {
+  bucket = "contact-me-terraform-state"
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
