@@ -1,7 +1,9 @@
 # Terraform Associate Exam Guide
 
 ## creating resource conditinally using:
-count statement  
+
+count statement
+
 ```bash
 resource "aws_intance" "example"{
     count = var.create_insatnce ? 1: 0
@@ -9,13 +11,17 @@ resource "aws_intance" "example"{
     instance_type = "t2.micro"
 }
 ```
+
 ## Remote exec provisioner
+
 to execute command on remore machine using SSH
 
 ## remove files from Terraform state with out deleting resource
+
 terraform state rm
 
 ## use dyanmic to dynamically generate the resources
+
 ```
 variable "ingress_ports" {
   type    = list(number)
