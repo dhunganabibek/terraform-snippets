@@ -43,3 +43,24 @@ resource "aws_security_group" "example" {
 }   ]
 }
 ```
+## You can also provide backend configuration file in backend.hcl
+```
+# backend.hcl
+bucket = "terraform-up-and-running-state"
+region = "us-east-2"
+dynamodb_table = "terraform-up-and-running-locks"
+encrypt = true
+
+# Partial configuration. The other settings (e.g., bucket,
+region) will be
+# passed in from a file via -backend-config arguments to
+'terraform init'
+terraform {
+ backend "s3" {
+ key = "example/terraform.tfstate"
+ }
+}
+
+terraform init -backend-config=backend.hcl
+
+```

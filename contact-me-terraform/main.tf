@@ -62,3 +62,28 @@ resource "aws_dynamodb_table" "contact_me_terraform_state_lock" {
     prevent_destroy = true
   }
 }
+
+
+# setting up the backend for Terraform to use the S3 bucket and DynamoDB table
+terraform {
+  backend "s3" {
+    bucket         = "contact-me-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "contact-me-terraform-state-lock"
+    encrypt       = true
+    
+  }
+}
+
+
+# setting up the output for the S3 bucket and DynamoDB table
+output "s3_bucket_name" {
+  value = aws_s3_bucket.contact_me_terraform_state.id
+  description = "The name of the S3 bucket used for Terraform state"
+}
+
+output "dynamodb_table_name" {
+  value = aws_dynamodb_table.contact_me_terraform_state_lock.name
+  description = "The name of the DynamoDB table used for Terraform state locking"
+}
