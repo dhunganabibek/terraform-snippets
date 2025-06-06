@@ -12,3 +12,5 @@ resource  "aws_s3_bucket" "contact_me_terraform_state" {
       prevent_destroy = true
     }
 }
+
+
