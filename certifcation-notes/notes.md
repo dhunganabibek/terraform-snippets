@@ -119,11 +119,12 @@ module <module_name> {
 }
 ```
 
-### uisng the output from the module
+### using the output from the module
 
 ```
 module.<module_name>.<output_variable_name>
 ```
+NOTE: you can only read out in parent module but not in siblig module.  
 
 ## Terraform data types
 1. string  
@@ -143,4 +144,5 @@ module.<module_name>.<output_variable_name>
 No infrastructure changes: This only updates the state file, not the actual resources.  
 Useful for refactoring: Helps when reorganizing code or adopting modules.  
 
-## 
+## terraform plan -destroy
+show summary of what will be destoyed if you do terraform destry
