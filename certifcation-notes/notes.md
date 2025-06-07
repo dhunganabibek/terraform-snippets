@@ -124,3 +124,13 @@ module <module_name> {
 ```
 module.<module_name>.<output_variable_name>
 ```
+
+## Terraform data types
+1. string  
+2. number  
+3. bool 
+4. list(type) => ["a", "a", "c"]
+5. set(type) =>  ["a", "c"]
+6. tuple(type) => ["alice", 30]
+7. map(type)
+8. object({ attr1=type, attr2=type })
