@@ -74,3 +74,6 @@ terraform init -backend-config=backend.hcl
 ## enable detailed logging
 export TF_LOG=
 
+## terraform taint vs terrafrom state rm
+terraform taint - mark state for recreation (bad resources)
+terraform state rm - remove resource from terraform state so that terraform will stop tracking
