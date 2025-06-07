@@ -86,3 +86,6 @@ terraform state rm - remove resource from terraform state so that terraform will
 local-exec: run shell command on local machine
 remote-exec: run shell command on remote machine
 file: copy files from local machine to remote machine
+
+## lock provider versions
+.terraform.lock.hcl  
