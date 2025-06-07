@@ -83,15 +83,44 @@ terraform taint - mark state for recreation (bad resources)
 terraform state rm - remove resource from terraform state so that terraform will stop tracking
 
 ## terraform proviser
+
 local-exec: run shell command on local machine
 remote-exec: run shell command on remote machine
 file: copy files from local machine to remote machine
 
 ## lock provider versions
-.terraform.lock.hcl  
+
+.terraform.lock.hcl
 
 ## list all the resources in current state file
-terraform state list  
+
+terraform state list
 
 ## upgrade proivider plugins
+
 terraform init --upgrade
+
+## Module in terraform
+
+### defining a module
+
+It is just a folder having bunch of tf file, with variable and output
+
+Those variable will act as input when calling
+
+### calling a module
+
+```sh
+module <module_name> {
+  source = <location of module> # can be registy or remote
+
+  # pass variable here
+
+}
+```
+
+### uisng the output from the module
+
+```
+module.<module_name>.<output_variable_name>
+```
