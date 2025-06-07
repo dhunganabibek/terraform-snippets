@@ -43,7 +43,9 @@ resource "aws_security_group" "example" {
 }   ]
 }
 ```
+
 ## You can also provide backend configuration file in backend.hcl
+
 ```
 # backend.hcl
 bucket = "terraform-up-and-running-state"
@@ -69,11 +71,18 @@ terraform init -backend-config=backend.hcl
 
 1. create_before_destroy - create new resources before destroy
 2. prevent_destroy - accdental deletion
-2. ignore chnages - ignores changes to specified attribues:wq
+3. ignore changes - ignores changes to specified attribues:wq
 
 ## enable detailed logging
+
 export TF_LOG=
 
 ## terraform taint vs terrafrom state rm
-terraform taint - mark state for recreation (bad resources)
+
+terraform taint - mark state for recreation (bad resources)  
 terraform state rm - remove resource from terraform state so that terraform will stop tracking
+
+## terraform proviser
+local-exec: run shell command on local machine
+remote-exec: run shell command on remote machine
+file: copy files from local machine to remote machine
