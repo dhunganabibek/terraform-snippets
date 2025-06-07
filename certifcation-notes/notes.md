@@ -129,8 +129,18 @@ module.<module_name>.<output_variable_name>
 1. string  
 2. number  
 3. bool 
-4. list(type) => ["a", "a", "c"]
+4. list(type) => ["a", "a", "c"] => "Homogeneous"
 5. set(type) =>  ["a", "c"]
-6. tuple(type) => ["alice", 30]
-7. map(type)
-8. object({ attr1=type, attr2=type })
+6. tuple(type) => ["alice", 30] => "Heterogenous"
+7. map(type) =>  all values must be of the same type.
+8. object({ attr1=type, attr2=type }) => all values of different type
+
+
+## Terraform state mv
+1. Rename a resource  
+2. moving resouce from/to the module
+
+No infrastructure changes: This only updates the state file, not the actual resources.  
+Useful for refactoring: Helps when reorganizing code or adopting modules.  
+
+## 
