@@ -167,3 +167,69 @@ terraform import <RESOURCE_TYPE>.<RESOURCE_NAME> <AWS_NAME>
 ```
 ## terraform plan -refresh-only
 show the refresh plan and update the state
+
+## Top 10 Terraform Commands with Common Flags
+
+### 1. terraform init
+- `-backend-config=PATH` : Specify backend config file.
+- `-upgrade` : Upgrade modules and providers.
+- `-reconfigure` : Reconfigure backend, ignoring saved config.
+- `-input=false` : Disable interactive prompts.
+
+### 2. terraform plan
+- `-out=PATH` : Save the plan to a file.
+- `-var 'NAME=VALUE'` : Set a variable value.
+- `-var-file=FILENAME` : Load variable values from a file.
+- `-target=RESOURCE` : Focus plan on a specific resource.
+- `-refresh-only` : Only refresh state, do not propose changes.
+- `-destroy` : Show what would be destroyed.
+- `-input=false` : Disable interactive input.
+- `-parallelism=N` : Limit concurrent operations.
+
+### 3. terraform apply
+- `PLAN_FILE` : Apply a saved plan file.
+- `-auto-approve` : Skip interactive approval.
+- `-var 'NAME=VALUE'` : Set a variable value.
+- `-var-file=FILENAME` : Load variable values from a file.
+- `-target=RESOURCE` : Apply only to a specific resource.
+- `-input=false` : Disable interactive input.
+- `-parallelism=N` : Limit concurrent operations.
+
+### 4. terraform destroy
+- `-auto-approve` : Skip approval prompt.
+- `-var 'NAME=VALUE'` : Set a variable value.
+- `-var-file=FILENAME` : Load variable values from a file.
+- `-target=RESOURCE` : Destroy only a specific resource.
+- `-input=false` : Disable interactive input.
+- `-parallelism=N` : Limit concurrent operations.
+
+### 5. terraform validate
+- `-json` : Output validation results in JSON format.
+
+### 6. terraform fmt
+- `-recursive` : Format files recursively in subdirectories.
+- `-check` : Check if files are formatted.
+- `-diff` : Show differences.
+
+### 7. terraform output
+- `-json` : Output values in JSON format.
+- `-state=PATH` : Use a specific state file.
+
+### 8. terraform state
+- `list` : List resources in state.
+- `show ADDRESS` : Show details for a resource.
+- `rm ADDRESS` : Remove a resource from state.
+- `mv SOURCE DEST` : Move a resource in state.
+- `pull` : Download latest state.
+- `push` : Upload a local state file.
+
+### 9. terraform import
+- `-var 'NAME=VALUE'` : Set a variable value.
+- `-var-file=FILENAME` : Load variable values from a file.
+- `-input=false` : Disable interactive input.
+
+### 10. terraform workspace
+- `new NAME` : Create a new workspace.
+- `select NAME` : Switch to a workspace.
+- `list` : List all workspaces.
+- `delete NAME` : Delete a workspace.
