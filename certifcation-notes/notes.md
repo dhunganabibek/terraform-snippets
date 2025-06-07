@@ -64,3 +64,5 @@ terraform {
 terraform init -backend-config=backend.hcl
 
 ```
+
+## some of the lifecyle block in terraform
