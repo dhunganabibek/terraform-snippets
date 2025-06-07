@@ -66,3 +66,11 @@ terraform init -backend-config=backend.hcl
 ```
 
 ## some of the lifecyle block in terraform
+
+1. create_before_destroy - create new resources before destroy
+2. prevent_destroy - accdental deletion
+2. ignore chnages - ignores changes to specified attribues:wq
+
+## enable detailed logging
+export TF_LOG=
+
