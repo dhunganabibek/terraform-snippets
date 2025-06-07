@@ -92,3 +92,6 @@ file: copy files from local machine to remote machine
 
 ## list all the resources in current state file
 terraform state list  
+
+## upgrade proivider plugins
+terraform init --upgrade
