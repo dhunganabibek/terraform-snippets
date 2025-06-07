@@ -145,4 +145,9 @@ No infrastructure changes: This only updates the state file, not the actual reso
 Useful for refactoring: Helps when reorganizing code or adopting modules.  
 
 ## terraform plan -destroy
-show summary of what will be destoyed if you do terraform destry
+show summary of what will be destoyed if you do terraform destroy
+
+
+## Terraform refresh
+update state file from real infrasructure.
+It only updates the state terraform already knows.
