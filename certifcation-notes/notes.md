@@ -165,3 +165,5 @@ resource "aws_s3_bucket" "my_bucket" {
 terraform import <RESOURCE_TYPE>.<RESOURCE_NAME> <AWS_NAME>
 
 ```
+## terraform plan -refresh-only
+show the refresh plan and update the state
