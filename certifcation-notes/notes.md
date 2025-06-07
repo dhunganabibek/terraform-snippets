@@ -151,3 +151,17 @@ show summary of what will be destoyed if you do terraform destroy
 ## Terraform refresh
 update state file from real infrasructure.
 It only updates the state terraform already knows.
+use terraform impoort to bring resources under terraform manangement.
+
+For terraform import:  
+```
+1. add the resource block manually
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "your-bucket-name"
+  # (add other configuration as needed)
+}
+
+2. Run import command to update the state file
+terraform import <RESOURCE_TYPE>.<RESOURCE_NAME> <AWS_NAME>
+
+```
