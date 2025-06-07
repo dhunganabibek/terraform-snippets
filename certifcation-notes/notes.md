@@ -89,3 +89,6 @@ file: copy files from local machine to remote machine
 
 ## lock provider versions
 .terraform.lock.hcl  
+
+## list all the resources in current state file
+terraform state list  
